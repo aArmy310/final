@@ -31,27 +31,27 @@ sound3 = loadSound("obs.mp3")
 
 function setup(){
 
-        createCanvas(600,500);
+        createCanvas(windowWidth,windowHeight);
         
-        bg = createSprite(300,250);
+        bg = createSprite(windowWidth/2,windowHeight/2);
         bg.addImage(bgImg)
         bg.scale = 1.5;
        
-        bird = createSprite(90,250,50,50);
+        bird = createSprite(90,windowHeight/2,50,50);
         bird.scale = 0.4;
         bird.addAnimation("bird",birdImg);
-        ground = createSprite(300,495,600,5);
+        ground = createSprite(windowWidth/2,windowHeight-10,600,5);
         ground.visible = false;
         
        // ground.addImage()
-        topE = createSprite(300,5,600,5);
+        topE = createSprite(windowWidth/2,5,600,5);
         topE.visible = false;
-        leftE = createSprite(2,250,2,500)
+        leftE = createSprite(2,windowHeight/2,2,500)
         leftE.visible = false;
         //tempBg = createSprite(300,250,600,500);
         //tempBg.shapeColor ="white";
         //tempBg.visible=false;
-        bgS = createSprite(300,250);
+        bgS = createSprite(windowWidth/2,windowHeight/2);
         bgS.addImage(start_bg);
         bgS.visible = false;
         foodGroup = new Group();
@@ -83,7 +83,7 @@ function draw(){
         count = 0;
         score = 0;
         play.show();
-        play.position(750,200)
+        play.position(windowWidth/2,windowHeight/2)
         play.mousePressed(()=>{
        
 
@@ -180,7 +180,7 @@ sound1.play();
 
 function obstacles(){
     if (frameCount%100===0){
-        var ob=createSprite(610,440)
+        var ob=createSprite(windowWidth+10,windowHeight-60);
         var r=Math.round(random(1,5))
         ob.scale=0.3;
         switch(r){
@@ -199,7 +199,7 @@ function obstacles(){
 }
 function food(){
     if (frameCount%80===0){
-        var ob=createSprite(610,random(5,495),30,30)
+        var ob=createSprite(windowWidth+10,random(5,windowHeight-5),30,30)
         var r=Math.round(random(1,4))
         ob.scale = 0.2   
         switch(r){
